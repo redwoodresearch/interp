@@ -1,0 +1,67 @@
+{
+  "name": "app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@msgpack/msgpack": "^2.7.1",
+    "@petamoriken/float16": "^3.6.3",
+    "@petersn/rrstreamdb": "^0.0.3",
+    "@rollup/plugin-commonjs": "^21.0.2",
+    "@rollup/plugin-node-resolve": "^13.1.3",
+    "@rollup/plugin-replace": "^4.0.0",
+    "@rollup/plugin-typescript": "^8.3.1",
+    "@testing-library/jest-dom": "^5.16.2",
+    "@testing-library/react": "^12.1.3",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.4.0",
+    "@types/ndarray": "^1.0.11",
+    "@types/node": "^16.11.25",
+    "@types/react": "^17.0.39",
+    "@types/react-dom": "^17.0.11",
+    "chroma-js": "^2.4.2",
+    "highcharts": "^9.3.3",
+    "highcharts-react-official": "^3.1.0",
+    "ndarray": "^1.0.19",
+    "ndarray-ops": "^1.2.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^6.2.2",
+    "react-scripts": "5.0.0",
+    "react-select": "^5.2.2",
+    "react-zoom-pan-pinch": "^2.1.3",
+    "rollup": "^2.63.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "typescript": "^4.5.5",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "rollup": "rollup -c --environment INCLUDE_DEPS,BUILD:development",
+    "serve_python": "ls ../local_dev.py | env PYTHONPATH=.. entr -r python ../local_dev.py"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/chroma-js": "^2.1.3",
+    "@types/ndarray-ops": "^1.2.4"
+  }
+}

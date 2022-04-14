@@ -1,0 +1,9 @@
+# these are installed separately from other dependencies because otherwise
+# pip runs out of memory on circleci. They are a subset of the project
+# requirements.txt. This version installs CPU-only pytorch.
+matplotlib==3.4.2
+-f https://download.pytorch.org/whl/cpu/torch_stable.html
+torch==1.10.2+cpu
+jax
+
+# NOTE: REMEMBER TO CHANGE pre_requirements.txt ALSO
