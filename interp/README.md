@@ -17,10 +17,10 @@
   > aws s3 cp s3://rrserve/interp-assets/attention_only_two_layers/model_info.json --no-sign-request /tmp
   download: s3://rrserve/interp-assets/attention_only_two_layers/model_info.json to ../../tmp/model_info.json
   ```
-Then save the `model.bin` and `model_info.json` in a `model_name` subdirectory of one of the following locations. The code will try to find the model assets in the following locations in order:
-  - environment variables `INTERPRETABILITY_MODELS_DIR` for models and `INTERP_DATA_DIR` for data
-  - local folder `~/datasets` for data, whatever local folder you pass to `load_model` for models (e.g. `~/interp_models_jax`)
-  - RRFS. This is generally slower so it's preferred to cache models locally.
+  Then save the `model.bin` and `model_info.json` in a `model_name` subdirectory of one of the following locations. The code will try to find the model assets in the following locations in order:
+    - environment variables `INTERPRETABILITY_MODELS_DIR` for models and `INTERP_DATA_DIR` for data
+    - local folder `~/datasets` for data, whatever local folder you pass to `load_model` for models (e.g. `~/interp_models_jax`)
+    - RRFS. This is generally slower so it's preferred to cache models locally.
 - `pip install -r requirements.txt`
 - If you see an error about attrs, do `pip uninstall attrs; pip install attrs`
 
