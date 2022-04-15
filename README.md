@@ -1,3 +1,8 @@
+# Redwood Interpretability Tools
+
+This is an open source mirror of Redwood Research's transformer interpretability tools. This is all the code behind our UI at [our demo website](http://interp-tools.redwoodresearch.org), as well as our interpretability-specific transformer implementation and gradient query framework.
+
+
 ## Setup
 - You need access to pretrained models (or train them yourself), and OpenWebText data. You can download our pretrained models (and OpenAI models ported into our codebase) fro s3. To download these from S3 you need the S3 cli, but not an AWS account:
   ```
@@ -11,14 +16,7 @@
 - `pip install -r requirements.txt`
 - If you see an error about attrs, do `pip uninstall attrs; pip install attrs`
 
-## React Client Installation
-- Install npm: one way is to do:
-    `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash`
-    `source ~/.zshrc`
-- Go to the interp/app folder, and install our npm dependencies
-- `npm install`
-
-## Running our interpretability GUI
+### Running our interpretability GUI
 
 - Go to /interp
 - `python local_dev.py`
@@ -27,6 +25,34 @@
 - Your browser should open to localhost:3000, and the GUI should start working after a few seconds.
 - You can write Python modules in the tensor_makers folder and they will immediately become available in the website.
 
-## Running in a Jupyter notebook (or VS Code notebook)
+## Using our Composable UI (CUI) from a Jupyter notebook:
 
-- See `cui_demo.ipynb` for instructions. 
+- Start our JS server, as described above
+- In a Jupyter notebook, write code like the following:
+```
+import interp.cui as cui
+import numpy as np
+from interp.ui.very_named_tensor import VeryNamedTensor
+
+await cui.init(port=6789)
+
+hidden_size = 20
+token_strings = ["Hello","There"]
+# using fake data in the shape of a transformer hidden state
+tensor = np.random.normal(0,1,(len(token_strings),hidden_size))
+
+my_vnt = VeryNamedTensor(
+    tensor,
+    dim_names=["Token","Embedding"],
+    dim_types=["seq","hidden"],
+    dim_idx_names=[
+        token_strings,
+        [str(i) for i in hidden_size]
+    ],
+    units="activation",
+    title="Random Data",
+)
+
+await cui.show_tensors(my_vnt)
+```
+- See `cui_demo.ipynb` for another example using the CUI. 
