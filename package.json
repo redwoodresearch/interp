@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@petamoriken/float16": "^3.6.3"
+  }
+}
